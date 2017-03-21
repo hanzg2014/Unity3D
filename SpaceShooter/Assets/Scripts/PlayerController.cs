@@ -21,11 +21,14 @@ public class PlayerController : MonoBehaviour {
 	private float nextFire;
 
 	private Rigidbody rb;
+	private AudioSource ad;
+
 
 //	public Text messageText;
 
 	void Start() {
-		rb = GetComponent<Rigidbody>();
+		rb = GetComponent<Rigidbody> ();
+		ad = GetComponent<AudioSource> ();	// need the same kind of reference like Rigidbody
 		nextFire = 0.0f;	//Don't forget to initiate nextFire with 0
 	}
 
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButton("Fire1")&& Time.time > nextFire) {
 			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);// as GameObject;
 			nextFire = Time.time + fireRate;	//there will be a cooldown time (fireRate) after each shot
+			ad.Play();
 		}
 	}
 
