@@ -7,8 +7,21 @@ public class DestroyByContact : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject playerExplosion;
 
+	private GameController gameController;	//private rather than public, since we need not make reference in a public way
+	public int scoreValue;	//for GameController
+
+
 	// Use this for initialization
 	void Start () {
+		GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+		if (gameControllerObject != null) {
+			gameController = gameControllerObject.GetComponent<GameController> ();
+		}
+
+		if (gameControllerObject == null) {
+			Debug.Log ("Cannot find 'GameController' script");
+		}
+
 		
 	}
 	
@@ -26,9 +39,11 @@ public class DestroyByContact : MonoBehaviour {
 
 		if (other.gameObject.CompareTag ("Player")) {
 			Instantiate (playerExplosion, other.gameObject.transform.position, other.gameObject.transform.rotation);
+			gameController.GameOver ();
 		}
 		//if returned, the following codes will not be reached and executed
 		Destroy(other.gameObject);
 		Destroy(gameObject); //this.gameObject	//codewise, it does not matter in what order we mark the objects to be destroyed, as long as they are within the same frame
+		gameController.AddScore(scoreValue);
 	} 
 }

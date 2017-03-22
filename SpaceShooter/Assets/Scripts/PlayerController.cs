@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 [System.Serializable] //in order to view properties in Unity's inspector 
 public class Boundary{
@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
 	public Transform shotSpawn;	//Unity is clever enough to reference the GameObject.Transform component for us even we only drag the GameObject
 	public float fireRate;	//the unity is second
 
+
 	private float nextFire;
 
 	private Rigidbody rb;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody> ();
 		ad = GetComponent<AudioSource> ();	// need the same kind of reference like Rigidbody
 		nextFire = 0.0f;	//Don't forget to initiate nextFire with 0
+
 	}
 
 	void Update(){	//Unity will execute all the codes in Update() function before each frame
@@ -54,5 +56,6 @@ public class PlayerController : MonoBehaviour {
 		rb.rotation = Quaternion.Euler (0.0f, 0.0f, rb.velocity.x * (-tilt));	//use the negative value for tilt, or it will become opposite
 			
 	}
+
 }
 
