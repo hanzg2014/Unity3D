@@ -1,20 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
 	public float speed;				//Floating point variable to store the player's movement speed.
+	public Text countText;
+	public Text winText;
 
 	private Rigidbody2D rb2d;		//Store a reference to the Rigidbody2D component required to use 2D Physics.
 	private int count;				//Integer to store the number of pickups collected so far.
 
+
+	void SetCountText(){
+		countText.text = "Count:" + count.ToString ();
+		winText.text = "";
+	}
 	// Use this for initialization
 	void Start()
 	{
 		//Get and store a reference to the Rigidbody2D component so that we can access it.
 		rb2d = GetComponent<Rigidbody2D> ();
+		count = 0;
+		SetCountText ();
 	}
-
+		
 	//FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
 	void FixedUpdate()
 	{
@@ -30,11 +40,15 @@ public class PlayerController : MonoBehaviour {
 		//Call the AddForce function of our Rigidbody2D rb2d supplying movement multiplied by speed to move our player.
 		rb2d.AddForce (movement * speed);
 	}
-
+		
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.CompareTag("PickUp")){
-			//other.gameObject.SetActive (false);
-			Destroy(other.gameObject);
+			other.gameObject.SetActive (false);
+			count = count + 1;
+			SetCountText ();
+			if (count >= 8)
+				winText.text = "You Win!";
+//			Destroy(other.gameObject);
 		}
 	}
 
