@@ -13,4 +13,6 @@ public class Rotator : MonoBehaviour {
 	void Update () {
 		transform.Rotate (new Vector3 (0, 0, 45) * Time.deltaTime);	//this will ensure that the object rotates (0,0,45) per second
 	}
+
+
 }
