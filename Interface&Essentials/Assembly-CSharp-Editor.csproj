@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Editor\LevelScriptEditor.cs" />
      <Compile Include="Assets\Editor\ObjectBuilderEditor.cs" />
+     <Compile Include="Assets\Editor\SomeScriptEditor.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
