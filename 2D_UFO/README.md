@@ -1,4 +1,4 @@
-#2D UFO
+#Unity3D Tutorial - 2D UFO
 
 
 ![2DUFO cover][2DUFO]
