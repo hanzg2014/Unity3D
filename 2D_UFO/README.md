@@ -2,6 +2,6 @@
 Unity3D Tutorial - 2D UFO
 
 
-![LeedCode cover][LeedCode]
+![2DUFO cover][2DUFO]
 
-[LeedCode]:https://leetcode.com/static/images/logolarge.jpg
+[2DUFO]:https://unity3d.com/sites/default/files/learn-playlist/icon/2dufo_thumb.jpg
